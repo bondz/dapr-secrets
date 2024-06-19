@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@dapr/dapr": "^3.3.1"
+  }
+}

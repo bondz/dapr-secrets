@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "name": "Launch with Dapr.yml",
+      "request": "launch",
+      "type": "dapr",
+      "runFile": "$(workspaceFolder)/dapr.yaml",
+      "preLaunchTask": "dapr"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "My Service",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/my-service/main.js",
+      "preLaunchTask": "daprd-debug-my-service",
+      "postDebugTask": "daprd-down-my-service",
+      "env": {
+        "APP_PORT": "3000",
+        "DAPR_HTTP_PORT": "6000",
+        "DAPR_GRPC_PORT": "60000"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug all services with Dapr",
+      "configurations": ["My Service"]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dapr",
+      "type": "dapr",
+      "runFile": "./dapr.yaml"
+    },
+    {
+      "label": "daprd-debug-my-service",
+      "type": "daprd",
+      "appId": "my-service",
+      "resourcesPaths": [".dapr/components"],
+      "config": ".dapr/config.yaml",
+      "appPort": 3000,
+      "httpPort": 6000,
+      "grpcPort": 60000,
+      "metricsPort": 9090
+    },
+    {
+      "label": "daprd-down-my-service",
+      "type": "shell",
+      "command": ["dapr", "stop", "-a", "my-service"],
+      "presentation": {
+        "clear": true,
+        "close": true,
+        "reveal": "never"
+      }
+    }
+  ]
+}

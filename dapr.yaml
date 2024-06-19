@@ -1,0 +1,15 @@
+version: 1
+common:
+  resourcesPaths: [.dapr/components]
+  configFilePath: .dapr/config.yaml
+  env:
+    DEBUG: true
+apps:
+  - appID: my-service
+    appDirPath: ./my-service
+    appPort: 3000
+    command: ['node', 'main.js']
+    daprHTTPPort: 6000
+    daprGRPCPort: 60000
+    env:
+      DAPR_HTTP_ENDPOINT: http://localhost:6000
